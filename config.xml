@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config>
+    <fullscreen>true</fullscreen>
+    <startup_url>https://www.youtube.com</startup_url>
+    <ignore_cookies>true</ignore_cookies>
+    <button_offset>1770,50</button_offset>
+    <button_size>100,100</button_size>
+</config>
