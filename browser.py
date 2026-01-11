@@ -1,4 +1,5 @@
 import sys
+import os
 import xml.etree.ElementTree as ET
 from PyQt6.QtCore import QUrl
 from PyQt6.QtWidgets import QApplication, QMainWindow, QToolBar, QLineEdit, QVBoxLayout, QWidget, QLabel
@@ -13,6 +14,16 @@ class ClickableImageLabel(QLabel):
     def mousePressEvent(self, event: QMouseEvent):
         self.clicked.emit()
         super().mousePressEvent(event)
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class SimpleBrowser(QMainWindow):
     def __init__(self):
@@ -76,7 +87,7 @@ class SimpleBrowser(QMainWindow):
 
         # Overlay Close Button (farmo.png)
         self.close_btn = ClickableImageLabel(self)
-        self.close_btn.setPixmap(QPixmap("farmo.png"))
+        self.close_btn.setPixmap(QPixmap(resource_path("farmo.png")))
         self.close_btn.setScaledContents(True) # In case we want to force size, but let's stick to original or handle resize if needed
         # Assuming original size or reasonable size. If specific size needed, we can setFixedSize.
         # User didn't specify size, just position.
@@ -146,6 +157,18 @@ class SimpleBrowser(QMainWindow):
             "button_size": ""
         }
         try:
+            if not os.path.exists('config.xml'):
+                default_config = """<?xml version="1.0"?>
+<config>
+    <fullscreen>true</fullscreen>
+    <startup_url>https://www.youtube.com</startup_url>
+    <ignore_cookies>true</ignore_cookies>
+    <button_offset>1770,50</button_offset>
+    <button_size>100,100</button_size>
+</config>"""
+                with open('config.xml', 'w') as f:
+                    f.write(default_config)
+
             tree = ET.parse('config.xml')
             root = tree.getroot()
             for child in root:
