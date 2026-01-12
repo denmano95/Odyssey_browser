@@ -1,0 +1,27 @@
+<Window x:Class="Odyssey.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Overlay" 
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent" 
+        ShowInTaskbar="False"
+        Topmost="True"
+        SizeToContent="WidthAndHeight">
+    <Grid>
+        <Button x:Name="CloseButton" 
+                Click="CloseButton_Click"
+                Cursor="Hand"
+                BorderThickness="0"
+                Background="Transparent">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image x:Name="ButtonImage" 
+                           Source="{TemplateBinding Tag}"
+                           Stretch="Fill"
+                           Cursor="Hand"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>

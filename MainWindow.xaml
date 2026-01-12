@@ -1,0 +1,33 @@
+<Window x:Class="Odyssey.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        mc:Ignorable="d"
+        Title="Simple C# Browser" Height="768" Width="1024"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Navigation Toolbar -->
+        <ToolBarTray Grid.Row="0" x:Name="NavBar">
+            <ToolBar>
+                <Button x:Name="BackButton" Content="Back" Click="BackButton_Click" ToolTip="Back to previous page"/>
+                <Button x:Name="ForwardButton" Content="Forward" Click="ForwardButton_Click" ToolTip="Forward to next page"/>
+                <Button x:Name="ReloadButton" Content="Reload" Click="ReloadButton_Click" ToolTip="Reload page"/>
+                <TextBox x:Name="UrlBar" Width="600" KeyDown="UrlBar_KeyDown" VerticalContentAlignment="Center"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- Content area with WebView2 -->
+        <Grid Grid.Row="1">
+            <!-- WebView2 Browser -->
+            <wv2:WebView2 x:Name="Browser"/>
+        </Grid>
+    </Grid>
+</Window>
