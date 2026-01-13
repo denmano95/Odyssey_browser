@@ -5,4 +5,5 @@
     <ignore_cookies>true</ignore_cookies>
     <button_offset>1535,17</button_offset>
     <button_size>120,125</button_size>
+    <force_close>false</force_close>
 </config>

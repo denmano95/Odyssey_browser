@@ -1,12 +1,14 @@
 =========================================
           ODYSSEY
 =========================================
+          ODYSSEY
+=========================================
 
 GENERAL INFORMATION
 -------------------
 Author:            Denis Manole
 Creation Date:     January 9, 2026
-Updated:           January 12, 2026 (C# Version)
+Updated:           January 13, 2026 (C# Version)
 License:           Open Source (MIT License)
 
 DESCRIPTION
@@ -16,6 +18,13 @@ Microsoft Edge WebView2 control.
 
 The software provides a simple, configurable browser with 
 fullscreen mode support and customizable UI elements.
+
+NEW FEATURES (v1.1)
+-------------------
+- Minimize to Tray: The overlay button now minimizes the application 
+  instead of closing it.
+- Single Instance: The application enforces a single running instance. 
+  Launching a second instance restores the existing window.
 
 REQUIREMENTS
 ------------
@@ -44,8 +53,8 @@ Edit config.xml to customize:
 - fullscreen: Enable/disable fullscreen mode
 - startup_url: Initial URL to load
 - ignore_cookies: Cookie handling
-- button_offset: Close button position (x,y)
-- button_size: Close button dimensions (width,height)
+- button_offset: Close/Minimize button position (x,y)
+- button_size: Close/Minimize button dimensions (width,height)
 
 LICENSE
 -------

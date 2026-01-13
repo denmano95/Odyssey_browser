@@ -11,6 +11,7 @@ namespace Odyssey
         public bool IgnoreCookies { get; set; } = false;
         public string ButtonOffset { get; set; } = "";
         public string ButtonSize { get; set; } = "";
+        public bool ForceClose { get; set; } = false;
     }
 
     public static class ConfigLoader
@@ -38,6 +39,7 @@ namespace Odyssey
                     config.IgnoreCookies = GetBoolValue(root, "ignore_cookies", false);
                     config.ButtonOffset = GetStringValue(root, "button_offset", "");
                     config.ButtonSize = GetStringValue(root, "button_size", "");
+                    config.ForceClose = GetBoolValue(root, "force_close", false);
                 }
             }
             catch (Exception ex)
@@ -57,6 +59,7 @@ namespace Odyssey
     <ignore_cookies>true</ignore_cookies>
     <button_offset>1575,17</button_offset>
     <button_size>120,125</button_size>
+    <force_close>false</force_close>
 </config>";
 
             try 

@@ -132,7 +132,17 @@ namespace Odyssey
                 }
 
                 // Create overlay
-                _overlayWindow = new OverlayWindow(imagePath, width, height, () => Close());
+                _overlayWindow = new OverlayWindow(imagePath, width, height, () => 
+                {
+                    if (_config.ForceClose)
+                    {
+                        Close();
+                    }
+                    else
+                    {
+                        WindowState = WindowState.Minimized;
+                    }
+                });
                 _overlayWindow.Owner = this;
                 
                 // Position overlay
